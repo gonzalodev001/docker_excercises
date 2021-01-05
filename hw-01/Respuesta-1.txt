@@ -1,0 +1,4 @@
+Tanto CMD y ENTRYPOINT reciben comandos y parámetros, y la diferencia esta en que CMD se pueden sobrescribir estos mismos desde la línea de comandos
+cuando el contenedor este ejecutado, en cambio la instrucción ENTRYPOINT no se podrá sobrescribir los comandos y parámetros cuando este ejecutado el contenedor.
+Entonces preferentemente y por buenas prácticas, se utiliza la instrucción ENTRYPOINT como un ejecutable y ejecute un comando por defecto cuando se inicie un 
+contenedor y utilizar CMD para pasar argumentos para un comando ENTRYPOINT. 
