@@ -1,0 +1,3 @@
+Las instrucciones ADD y COPY tiene similar funcionalidad de copiar archivos y/o directorios al sistema de archivos del contenedor, pero la diferencia esta
+en que la instrucción COPY hace una copia simple de los archivos, en cambio la instrucción ADD no solo copia, también permite la extracción de archivos
+comprimidos y desempaquetarlos en el contenedor, y además permite descargar archivos de una URL remota.
