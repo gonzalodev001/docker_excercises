@@ -1,0 +1,35 @@
+version: '3.6'
+services: 
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.3
+    container_name: elasticsearch
+    environment: 
+      - cluster.name=docker-cluster
+      - boostrap.memory_lock=true
+      - dsicovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits: 
+      memlock:
+        soft: -1
+        hard: -1
+    ports: 
+      - 9200:9200
+      - 9300:9300
+    networks: 
+      elastic:
+        aliases: 
+          - elastic_host
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.9.3
+    container_name: kibana
+    environment: 
+      - ELASTICSEARCH_HOST=elasticsearch
+      - ELASTICSEARCH_PORT=9200
+    ports:
+      - 5601:5601
+    depends_on: 
+      - elasticsearch
+networks: 
+  elastic:
+    name: elastic_net
+    driver: bridge
